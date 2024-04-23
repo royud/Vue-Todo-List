@@ -1,4 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+//layout
+import DefaultLayout from '@/layout/DefaultLayout.vue'
+
+//pages
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -7,7 +12,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: { layout: DefaultLayout }
       // component: () => import('../views/HomeView.vue')
     }
   ]

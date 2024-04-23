@@ -3,5 +3,14 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterView />
+  <component :is="$route.meta.layout || 'div'">
+    <RouterView />
+  </component>
 </template>
+
+<style>
+.container {
+  width: 1400px;
+  margin: 0 auto;
+}
+</style>
