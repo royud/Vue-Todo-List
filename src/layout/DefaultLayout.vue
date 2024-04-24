@@ -9,4 +9,8 @@
 import AppHeader from '@/components/AppHeader.vue'
 </script>
 
-<style scoped></style>
+<style scoped>
+main {
+  padding-top: 56px;
+}
+</style>

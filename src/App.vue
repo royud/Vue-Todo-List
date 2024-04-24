@@ -9,8 +9,26 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
 .container {
-  width: 1400px;
+  width: min(100%, 1400px);
   margin: 0 auto;
+}
+@media (max-width: 1440px) {
+  .container {
+    margin: 0 20px;
+  }
 }
 </style>
