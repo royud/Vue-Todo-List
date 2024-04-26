@@ -10,6 +10,7 @@ import { RouterView } from 'vue-router'
 
 <style>
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -22,13 +23,16 @@ ol,
 li {
   list-style: none;
 }
+article {
+  margin: 25px 0;
+}
 .container {
   width: min(100%, 1400px);
   margin: 0 auto;
 }
 @media (max-width: 1440px) {
   .container {
-    margin: 0 20px;
+    padding: 0 20px;
   }
 }
 </style>
