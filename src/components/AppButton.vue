@@ -1,15 +1,14 @@
 <template>
-  <button :class="[disabled, btnStyle]" ref="btnRef"><slot></slot></button>
+  <button :class="[disabled, btnStyle]"><slot></slot></button>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 defineProps<{ btnStyle?: 'primary' | 'danger' | undefined }>()
+const attrs = useAttrs()
 
-const btnRef = ref<HTMLButtonElement>()
-
-const disabled = computed<string>(() => (btnRef.value?.disabled ? 'disabled' : ''))
+const disabled = computed<string>(() => (attrs.disabled ? 'disabled' : ''))
 </script>
 
 <style scoped>
@@ -37,14 +36,13 @@ button {
 }
 
 .disabled {
-  opacity: 0.5;
-  filter: none;
+  filter: opacity(0.5);
   cursor: auto;
   &:hover {
-    filter: none;
+    filter: opacity(0.5);
   }
   &:active {
-    filter: none;
+    filter: opacity(0.5);
   }
 }
 </style>

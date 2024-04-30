@@ -23,7 +23,8 @@ ol,
 li {
   list-style: none;
 }
-article {
+article,
+form {
   margin: 25px 0;
 }
 .container {

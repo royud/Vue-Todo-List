@@ -26,11 +26,13 @@ todoData.value = await getTodos()
 
 <style scoped>
 ul {
-  width: 100%;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 20px; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  justify-items: center;
 }
 li {
   width: 300px;
@@ -48,7 +50,6 @@ li {
   text-overflow: ellipsis;
 }
 .btn-wrap {
-  height: 50px;
   display: flex;
   gap: 5px;
 }

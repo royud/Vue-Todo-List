@@ -4,13 +4,22 @@
       <h1>
         <RouterLink :to="{ name: 'home' }">Todo List</RouterLink>
       </h1>
-      <AppButton type="button" btn-style="primary" @click="console.log('추가')">추가</AppButton>
+      <AppButton
+        :disabled="$route.name === 'create'"
+        type="button"
+        btn-style="primary"
+        @click="router.push({ name: 'create' })"
+        >추가</AppButton
+      >
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 </script>
 
 <style scoped>

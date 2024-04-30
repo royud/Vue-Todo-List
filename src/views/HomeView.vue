@@ -4,7 +4,7 @@ import TodoList from '@/components/todos/TodoList.vue'
 
 <template>
   <article>
-    <h2>현재 Todo 리스트</h2>
+    <h2>Todo 리스트</h2>
 
     <Suspense timeout="0">
       <TodoList />
