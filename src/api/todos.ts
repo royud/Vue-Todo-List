@@ -1,15 +1,9 @@
-import axios from 'axios'
-
-export type Todo = {
-  id: string | number
-  title: string
-  content: string
-  status: boolean
-}
+import { api } from '@/api/instasce'
+import type { FormDataType, QueryValue } from '@/type'
 
 export const getTodos = async () => {
   try {
-    const { data } = await axios.get('http://localhost:3000/todos')
+    const { data } = await api.get('/todos')
 
     return data
   } catch (err) {
@@ -17,10 +11,43 @@ export const getTodos = async () => {
   }
 }
 
-export const postTodo = async (data: { title: string; content: string }) => {
+export const getTodo = async (id: QueryValue | string) => {
+  try {
+    const { data } = await api.get(`/todos/${id}`)
+
+    return data
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const postTodo = async (data: FormDataType) => {
   try {
     const corData = { ...data, status: false }
-    axios.post('http://localhost:3000/todos', corData)
+    await api.post('/todos', corData)
+  } catch (err) {
+    console.error(err)
+  }
+}
+export const updateTodo = async (id: QueryValue | string, data: FormDataType) => {
+  try {
+    await api.patch(`/todos/${id}`, data)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const updateTodoStatus = async (id: QueryValue | string, status: boolean) => {
+  try {
+    await api.patch(`/todos/${id}`, { status })
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const deleteTodo = async (id: QueryValue | string) => {
+  try {
+    await api.delete(`/todos/${id}`)
   } catch (err) {
     console.error(err)
   }

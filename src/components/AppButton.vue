@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue'
 
-defineProps<{ btnStyle?: 'primary' | 'danger' | undefined }>()
+defineProps<{ btnStyle?: 'primary' | 'success' | 'proceeding' | 'danger' | undefined }>()
 const attrs = useAttrs()
 
 const disabled = computed<string>(() => (attrs.disabled ? 'disabled' : ''))
@@ -20,7 +20,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   &:hover {
-    filter: brightness(120%) contrast(85%);
+    filter: brightness(110%);
   }
   &:active {
     filter: none;
@@ -33,6 +33,16 @@ button {
 .danger {
   border: 1px solid #e75c5c;
   color: #e75c5c;
+}
+.success {
+  border: 1px solid #7ee075;
+  background-color: #7ee075;
+  color: #ffffff;
+}
+.proceeding {
+  border: 1px solid #d7e075;
+  background-color: #d7e075;
+  color: #ffffff;
 }
 
 .disabled {
