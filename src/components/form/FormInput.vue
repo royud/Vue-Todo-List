@@ -21,8 +21,10 @@ const value = defineModel<string | number>()
 input {
   width: 100%;
   height: 30px;
+  color: var(--color-text);
+  background-color: var(--color-back-ground);
   border: 1px solid gray;
-  outline-color: #985ce7;
+  outline-color: var(--color-main);
   border-radius: 5px;
   padding: 5px;
 }

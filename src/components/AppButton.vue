@@ -14,35 +14,35 @@ const disabled = computed<string>(() => (attrs.disabled ? 'disabled' : ''))
 <style scoped>
 button {
   padding: 5px 8px;
-  border: 1px solid #985ce7;
-  background-color: #ffffff;
-  color: #985ce7;
+  border: 1px solid var(--color-main);
+  background-color: var(--color-background);
+  color: var(--color-main);
   border-radius: 5px;
   cursor: pointer;
   &:hover {
-    filter: brightness(110%);
+    filter: brightness(120%);
   }
   &:active {
     filter: none;
   }
 }
 .primary {
-  background-color: #985ce7;
-  color: #ffffff;
+  background-color: var(--color-main);
+  color: var(--color-text-white);
 }
 .danger {
-  border: 1px solid #e75c5c;
-  color: #e75c5c;
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
 }
 .success {
-  border: 1px solid #7ee075;
-  background-color: #7ee075;
-  color: #ffffff;
+  border: 1px solid var(--color-success);
+  background-color: var(--color-success);
+  color: var(--color-text-white);
 }
 .proceeding {
-  border: 1px solid #d7e075;
-  background-color: #d7e075;
-  color: #ffffff;
+  border: 1px solid var(--color-proceeding);
+  background-color: var(--color-proceeding);
+  color: var(--color-text-white);
 }
 
 .disabled {

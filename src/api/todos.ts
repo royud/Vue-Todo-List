@@ -1,4 +1,4 @@
-import { api } from '@/api/instasce'
+import { api } from '@/api/instance'
 import type { FormDataType, QueryValue } from '@/type'
 
 export const getTodos = async () => {
@@ -21,12 +21,15 @@ export const getTodo = async (id: QueryValue | string) => {
   }
 }
 
-export const postTodo = async (data: FormDataType) => {
+export const postTodo = async (data: FormDataType, success?: () => void, fail?: () => void) => {
   try {
     const corData = { ...data, status: false }
     await api.post('/todos', corData)
+
+    success && success()
   } catch (err) {
     console.error(err)
+    fail && fail()
   }
 }
 export const updateTodo = async (id: QueryValue | string, data: FormDataType) => {
@@ -45,10 +48,18 @@ export const updateTodoStatus = async (id: QueryValue | string, status: boolean)
   }
 }
 
-export const deleteTodo = async (id: QueryValue | string) => {
+export const deleteTodo = async (
+  id: QueryValue | string,
+  success?: () => void,
+  fail?: () => void
+) => {
   try {
     await api.delete(`/todos/${id}`)
+
+    success && success()
   } catch (err) {
     console.error(err)
+
+    fail && fail()
   }
 }

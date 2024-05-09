@@ -49,8 +49,9 @@ li:hover {
 }
 .contents {
   width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #985ce7;
+  background-color: var(--color-back-ground);
+  border: 1px solid var(--color-main);
+  border-bottom: none;
   padding: 5px;
   height: 70px;
 }
@@ -65,23 +66,22 @@ li:hover {
 button {
   flex: 1 1;
   height: 25px;
-  background-color: #985ce7;
-  border: 1px solid #985ce7;
+  background-color: var(--color-main);
+  border: 1px solid var(--color-main);
   border-radius: 0 0 5px 5px;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--color-text-white);
 }
 button.success {
-  background-color: #7ee075;
-  border: 1px solid #7ee075;
+  background-color: var(--color-success);
+  border: 1px solid var(--color-success);
 }
 button.proceeding {
-  background-color: #d7e075;
-  border: 1px solid #d7e075;
+  background-color: var(--color-proceeding);
+  border: 1px solid var(--color-proceeding);
 }
 button.delete {
-  background-color: #e07575;
-  border: 1px solid #e07575;
+  background-color: var(--color-danger);
+  border: 1px solid var(--color-danger);
 }
 </style>
-@/stores/todos

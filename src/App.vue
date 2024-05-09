@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import AppToast from '@/components/AppToast.vue'
 </script>
 
 <template>
   <component :is="$route.meta.layout || 'div'">
     <RouterView />
   </component>
+  <AppToast />
 </template>
 
 <style>

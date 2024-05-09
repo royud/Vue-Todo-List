@@ -23,8 +23,11 @@ import FormTextarea from '@/components/form/FormTextarea.vue'
 
 import { postTodo } from '@/api/todos'
 import type { FormDataType } from '@/type'
+import { useToastStore } from '@/stores/toast'
 
 const router = useRouter()
+
+const { addToast } = useToastStore()
 
 const form = ref<FormDataType>({
   title: '',
@@ -32,8 +35,12 @@ const form = ref<FormDataType>({
 })
 
 const submit = () => {
-  postTodo(form.value)
-  router.go(-1)
+  const success = () => {
+    addToast('생성이 완료되었습니다.', 'success')
+    router.go(-1)
+  }
+
+  postTodo(form.value, success, () => addToast('생성 중 문제가 발생하였습니다.', 'fail'))
 }
 </script>
 

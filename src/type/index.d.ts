@@ -13,3 +13,9 @@ export type FormDataType = {
 }
 
 export type QueryValue = LocationQueryValue | LocationQueryValue[]
+
+export type toastType = {
+  id: number
+  message: string
+  status: string
+}

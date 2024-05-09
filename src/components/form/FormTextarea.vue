@@ -20,8 +20,10 @@ const value = defineModel<string>()
 textarea {
   width: 100%;
   height: 50px;
+  color: var(--color-text);
+  background-color: var(--color-back-ground);
   border: 1px solid gray;
-  outline-color: #985ce7;
+  outline-color: var(--color-main);
   border-radius: 5px;
   resize: none;
   padding: 5px;
