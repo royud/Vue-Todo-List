@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import AppToast from '@/components/AppToast.vue'
+import AppModal from '@/components/AppModal.vue'
+import { useDarkStore } from './stores/dark'
+
+useDarkStore()
 </script>
 
 <template>
@@ -8,6 +12,7 @@ import AppToast from '@/components/AppToast.vue'
     <RouterView />
   </component>
   <AppToast />
+  <AppModal />
 </template>
 
 <style>

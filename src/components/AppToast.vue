@@ -41,7 +41,7 @@ ul {
 }
 li {
   width: 250px;
-  height: 70px;
+  min-height: 70px;
   border-radius: 5px;
   color: var(--color-text-white);
   background-color: var(--color-main);
@@ -50,6 +50,7 @@ li {
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
 }
 .list-enter-active,
 .list-leave-active {

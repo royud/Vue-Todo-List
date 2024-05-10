@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router'
 import { useTodosStore } from '@/stores/todos'
 import { storeToRefs } from 'pinia'
+import AppModal from '../AppModal.vue'
 
 const router = useRouter()
 
@@ -10,6 +11,9 @@ const { todos } = storeToRefs(store)
 const { fetchTodos, toggleTodo, removeTodo } = store
 
 await fetchTodos()
+const remove = (id: string) => {
+  removeTodo(id, { reload: 'todos' })
+}
 </script>
 
 <template>
@@ -27,10 +31,11 @@ await fetchTodos()
           {{ todo.status ? '완료' : '진행 중' }}
         </button>
         <button @click.stop="router.push({ name: 'update', query: { t: todo.id } })">수정</button>
-        <button class="delete" @click.stop="removeTodo(todo.id, { reload: 'todos' })">삭제</button>
+        <button class="delete" @click.stop="remove(todo.id)">삭제</button>
       </div>
     </li>
   </ul>
+  <AppModal> </AppModal>
 </template>
 
 <style scoped>

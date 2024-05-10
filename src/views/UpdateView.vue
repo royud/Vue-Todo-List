@@ -14,19 +14,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import AppButton from '@/components/AppButton.vue'
 import FormInput from '@/components/form/FormInput.vue'
 import FormTextarea from '@/components/form/FormTextarea.vue'
 
-import { updateTodo, getTodo } from '@/api/todos'
+import { updateTodo } from '@/api/todos'
 
 import type { FormDataType, QueryValue } from '@/type'
+import { useToastStore } from '@/stores/toast'
+import { useTodosStore } from '@/stores/todos'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute()
 const router = useRouter()
+
+const todoStore = useTodosStore()
+const { todo } = storeToRefs(todoStore)
+const { fetchTodo } = todoStore
+
+const { addToast } = useToastStore()
 
 const form = ref<FormDataType>({
   title: '',
@@ -34,17 +43,18 @@ const form = ref<FormDataType>({
 })
 const id: QueryValue = route.query.t
 
-const fetch = async () => {
-  const data = await getTodo(id)
+fetchTodo(id)
 
-  form.value.title = data.title
-  form.value.content = data.content
-}
-fetch()
+watchEffect(() => {
+  form.value = todo.value
+})
 
 const submit = () => {
-  updateTodo(id, form.value)
-  router.go(-1)
+  const success = () => {
+    addToast('수정이 완료되었습니다.', 'success')
+    router.go(-1)
+  }
+  updateTodo(id, form.value, success, () => addToast('수정 중 문제가 발생하였습니다.', 'fail'))
 }
 </script>
 

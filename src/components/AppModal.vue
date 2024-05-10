@@ -1,7 +1,7 @@
 <template>
   <div v-show="isOpen" class="bg" @click.self="closeModal">
     <div class="modal">
-      <slot></slot>
+      <component :is="contents" />
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@ import { useModalStore } from '@/stores/modal'
 import { storeToRefs } from 'pinia'
 
 const store = useModalStore()
-const { isOpen } = storeToRefs(store)
+const { isOpen, contents } = storeToRefs(store)
 const { closeModal } = store
 </script>
 
